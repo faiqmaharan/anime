@@ -1,0 +1,79 @@
+import Animelist from "@/app/components/Animelist"
+
+const Home = async () => {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/top/anime`)
+  const anime = await response.json()
+ 
+
+  return (
+<div>
+  <h1>Paling Populer</h1>
+  <div className="grid grid-cols-3 gap-4">
+  {anime.data.map(data => {
+   return <Animelist title={data.title} images={data.images.webp.image_url} /> 
+  })}
+  </div>
+</div>
+  )
+}
+
+export default Home
+
+import Animelist from "@/app/components/Animelist";
+
+const Home = ({ anime }) => {
+  return (
+    <div>
+      <h1>Paling Populer</h1>
+      <div className="grid grid-cols-3 gap-4">
+        {anime.data.map((data) => (
+          <Animelist key={data.title} title={data.title} images={data.images.webp.image_url} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+<a href="src/app/search/[keyword]/page.js">dasas</a>
+
+export default Home;
+
+
+anime/id filenya
+
+"use client"
+
+import { useState, useEffect } from 'react';
+import { getAnimeResponse } from '@/app/libs/api-libs';
+
+const Page = async ({ params }) => {
+  const { id } = params;
+  const [anime, setAnime] = useState(null);
+
+  useEffect(() => {
+    const fetchAnime = async () => {
+      try {
+        const animeData = await getAnimeResponse(`anime/${id}`);
+        setAnime(animeData);
+      } catch (error) {
+        console.error('Error fetching anime:', error);
+      }
+    };
+
+    fetchAnime();
+  }, [id]);
+
+  return (
+    <>
+      {anime ? (
+        <div>
+          <h3>{anime.title}</h3>
+        </div>
+      ) : (
+        <p></p>
+      )}
+    </>
+  );
+};
+
+export default Page;
