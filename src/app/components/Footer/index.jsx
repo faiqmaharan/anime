@@ -18,7 +18,7 @@ const Footer = () => {
                      </a>
     
                 </div>
-                <p class="font-medium pb-4 text-sm text-slate-500 text-center">Custom  by <a href="https://instagram.com/_maharan" target="_blank" class="font-bold text-primary"> Faiq Maharan</a>😍 </p>
+                <p class="font-medium pb-4 text-sm text-slate-500 text-center">Build by <a href="https://instagram.com/_maharan" target="_blank" class="font-bold text-primary"> Faiq Maharan</a>😍 </p>
             </div>
 
         </div>
